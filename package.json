@@ -2,7 +2,10 @@
   "name": "@portfolio-frontend/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "dev:election": "nx dev election",
+    "build:election": "nx build election"
+  },
   "private": true,
   "dependencies": {
     "@emotion/css": "^11.13.0",
