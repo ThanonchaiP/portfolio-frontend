@@ -1,0 +1,92 @@
+export const partyList = [
+  {
+    id: 1,
+    name: 'Dragon Ball',
+    color: '#F75301',
+    image: '',
+  },
+  {
+    id: 2,
+    name: 'Naruto',
+    color: '#F75301',
+    image: '',
+  },
+  {
+    id: 3,
+    name: 'One Piece',
+    color: '#F75301',
+    image: '',
+  },
+  {
+    id: 4,
+    name: 'Bleach',
+    color: '#F75301',
+    image: '',
+  },
+  {
+    id: 5,
+    name: 'Attack on Titan',
+    color: '#F75301',
+    image: '',
+  },
+  {
+    id: 6,
+    name: 'My Hero Academia',
+    color: '#F75301',
+    image: '',
+  },
+  {
+    id: 7,
+    name: 'Black Clover',
+    color: '#F75301',
+    image: '',
+  },
+  {
+    id: 8,
+    name: 'Hunter x Hunter',
+    color: '#F75301',
+    image: '',
+  },
+  {
+    id: 9,
+    name: 'Tokyo Ghoul',
+    color: '#F75301',
+    image: '',
+  },
+  {
+    id: 10,
+    name: 'Death Note',
+    color: '#F75301',
+    image: '',
+  },
+  {
+    id: 11,
+    name: 'Fullmetal Alchemist',
+    color: '#F75301',
+    image: '',
+  },
+  {
+    id: 12,
+    name: 'Sword Art Online',
+    color: '#F75301',
+    image: '',
+  },
+  {
+    id: 13,
+    name: 'Fairy Tail',
+    color: '#F75301',
+    image: '',
+  },
+  {
+    id: 14,
+    name: 'Demon Slayer',
+    color: '#F75301',
+    image: '',
+  },
+  {
+    id: 15,
+    name: 'One Punch Man',
+    color: '#F75301',
+    image: '',
+  },
+];

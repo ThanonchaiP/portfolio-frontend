@@ -2,8 +2,7 @@
 
 import { css } from '@emotion/css';
 import { useEffect, useState } from 'react';
-
-import { useWindowDimensions } from '../../hooks';
+import { useWindowDimensions } from '../hooks';
 
 export default function Index() {
   const { width } = useWindowDimensions();
@@ -15,41 +14,68 @@ export default function Index() {
     show: false,
   });
 
-  useEffect(() => {
-    const element = document.getElementById('area-7102');
-    if (!element) return;
-    const rect = element.querySelector('rect');
-    rect?.setAttribute('fill', 'rgb(255, 127, 43)');
-  }, []);
+  // useEffect(() => {
+  //   const element = document.getElementById('area-7102');
+  //   if (!element) return;
+  //   const rect = element.querySelector('rect');
+  //   rect?.setAttribute('fill', 'rgb(255, 127, 43)');
+  // }, []);
 
   useEffect(() => {
+    const handleMouseLeave = () => {
+      setTooltip((prev) => ({ ...prev, show: false }));
+    };
+
+    const onClick = (id: string) => {
+      document.querySelectorAll('svg g g').forEach((e) => {
+        if (
+          e.id === id ||
+          e.id.includes(`area-${id.split('-')[1]}`) ||
+          e.id === `province-${id.slice(5, 7)}-name`
+        ) {
+          e.setAttribute('opacity', '1');
+        } else {
+          e.setAttribute('opacity', '0.3');
+        }
+      });
+      // document.querySelectorAll('svg g g').forEach((e) => {
+      //   const isTitle = e.id.includes('name');
+      //   if (e.id === id && isTitle) {
+      //     e.setAttribute('opacity', '1');
+      //   } else if (e.id.includes(`area-${id.split('-')[1]}`)) {
+      //     e.setAttribute('opacity', '1');
+      //   } else {
+      //     e.setAttribute('opacity', '0.3');
+      //   }
+      // });
+    };
+
     document.querySelectorAll('svg g g').forEach((e) => {
       const { x, y } = e.getBoundingClientRect();
       e.addEventListener('mouseenter', () => {
+        e.setAttribute('cursor', 'pointer');
         if (e.id.includes('name')) return;
         setTooltip({ show: true, x: x + 40, y, areaId: e.id });
       });
-      e.addEventListener('mouseleave', () => {
-        setTooltip((prev) => {
-          return { ...prev, show: false };
-        });
-      });
+      e.addEventListener('click', () => onClick(e.id));
+      e.addEventListener('mouseleave', handleMouseLeave);
     });
 
     return () => {
-      document.querySelectorAll('svg g').forEach((e) => {
-        e.removeEventListener('mouseover', () => console.log('remove'));
-        e.removeEventListener('mouseleave', () => console.log('remove'));
+      document.querySelectorAll('svg g g').forEach((e) => {
+        e.removeEventListener('mouseenter', () => console.log('remove'));
+        e.removeEventListener('mouseleave', handleMouseLeave);
+        e.removeEventListener('click', () => console.log('remove'));
       });
     };
   }, [width]);
 
   return (
-    <div>
+    <>
       <div
         className="wrapper"
         style={{
-          background: '#000',
+          background: '#ffece0',
           height: '100vh',
         }}
       >
@@ -61,7 +87,6 @@ export default function Index() {
             transform: translate(-50%, -50%);
             font-size: 24px;
             border-radius: 4px;
-            background-color: #000;
             padding: 16px;
             max-width: 546px;
 
@@ -852,7 +877,7 @@ export default function Index() {
           {tootltip.areaId}
         </div>
       )}
-    </div>
+    </>
   );
 }
 // 'use client';
@@ -860,7 +885,7 @@ export default function Index() {
 // import { css } from '@emotion/css';
 // import { useEffect, useState } from 'react';
 
-// import { useWindowDimensions } from '../../hooks';
+// import { useWindowDimensions } from '../hooks';
 
 // export default function Index() {
 //   const { width } = useWindowDimensions();
