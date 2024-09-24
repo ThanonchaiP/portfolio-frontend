@@ -4,7 +4,7 @@ import { css } from '@emotion/css';
 import { useEffect, useState } from 'react';
 
 import { useWindowDimensions } from '../hooks';
-import { Eastern } from '../svg/region';
+import { Northeastern } from '../svg/region';
 
 export default function Index() {
   const { width } = useWindowDimensions();
@@ -88,7 +88,7 @@ export default function Index() {
             }
           `}
         >
-          <Eastern />
+          <Northeastern />
         </div>
       </div>
       {tootltip.show && (
